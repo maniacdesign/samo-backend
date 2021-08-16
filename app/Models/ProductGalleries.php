@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
+
+class ProductGalleries extends Model
+{
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'url',
+        'product_id'
+    ];
+
+    public function getUrlAttribut($url)
+    {
+        return config('app.url') . Storage::url($url);
+    }
+}
